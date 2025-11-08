@@ -1,9 +1,7 @@
 package org.example.factory;
 
-/**
- * ConservativeBudget implements a conservative budget allocation strategy.
- * This class is part of the Factory Method pattern implementation.
- */
+
+//conservative budget allocation strategy.
 public class ConservativeBudget implements BudgetPlan {
     private double totalIncome;
 
@@ -13,10 +11,10 @@ public class ConservativeBudget implements BudgetPlan {
 
     @Override
     public String allocate() {
-        double food = totalIncome * 0.25; // 25% for food
-        double housing = totalIncome * 0.35; // 35% for housing
-        double entertainment = totalIncome * 0.15; // 15% for entertainment
-        double savings = totalIncome * 0.25; // 25% for savings
+        double food = totalIncome * 0.25;
+        double housing = totalIncome * 0.35;
+        double entertainment = totalIncome * 0.15;
+        double savings = totalIncome * 0.25;
 
         return String.format("Conservative Budget Allocation:\n" +
                 "Food: $%.2f\n" +

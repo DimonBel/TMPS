@@ -3,12 +3,7 @@ package org.example.builder;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * BudgetResult represents the result of a budget allocation.
- * This class works with BudgetResultBuilder to implement the Builder pattern
- * for creating complex budget results with different categories, priorities,
- * and constraints.
- */
+
 public class BudgetResult {
     private double food;
     private double housing;
@@ -16,14 +11,10 @@ public class BudgetResult {
     private double savings;
     private Map<String, Double> customCategories;
 
-    /**
-     * Package-private constructor to be used by the BudgetResultBuilder.
-     */
+
     BudgetResult() {
         this.customCategories = new HashMap<>();
     }
-
-    // Getters for all budget categories
 
     public double getFood() {
         return food;
@@ -45,11 +36,7 @@ public class BudgetResult {
         return new HashMap<>(customCategories);
     }
 
-    /**
-     * Calculates the total budget amount.
-     * 
-     * @return The total budget amount
-     */
+    //total budget amount.
     public double getTotal() {
         double total = food + housing + entertainment + savings;
         for (double amount : customCategories.values()) {
@@ -78,10 +65,7 @@ public class BudgetResult {
         return sb.toString();
     }
 
-    /**
-     * Public static Builder so callers can use new BudgetResult.Builder()
-     * The inner builder has access to the private fields of BudgetResult.
-     */
+    //inner builder has access fields of BudgetResult.
     public static class Builder {
         private final BudgetResult instance;
 

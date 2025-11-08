@@ -1,10 +1,7 @@
 package org.example.factory;
 
-/**
- * ConcreteBudgetFactory implements the BudgetFactory to create specific budget
- * plans.
- * This class is part of the Factory Method pattern implementation.
- */
+
+//create specific budget plans.
 public class ConcreteBudgetFactory extends BudgetFactory {
 
     @Override
