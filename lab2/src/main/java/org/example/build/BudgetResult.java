@@ -1,16 +1,15 @@
-package org.example.builder;
+package org.example.build;
 
 import java.util.HashMap;
 import java.util.Map;
 
-
+// ---------- Product ----------
 public class BudgetResult {
     private double food;
     private double housing;
     private double entertainment;
     private double savings;
     private Map<String, Double> customCategories;
-
 
     BudgetResult() {
         this.customCategories = new HashMap<>();
@@ -36,7 +35,6 @@ public class BudgetResult {
         return new HashMap<>(customCategories);
     }
 
-    //total budget amount.
     public double getTotal() {
         double total = food + housing + entertainment + savings;
         for (double amount : customCategories.values()) {
@@ -65,41 +63,10 @@ public class BudgetResult {
         return sb.toString();
     }
 
-    //inner builder has access fields of BudgetResult.
-    public static class Builder {
-        private final BudgetResult instance;
-
-        public Builder() {
-            instance = new BudgetResult();
-        }
-
-        public Builder setFood(double amount) {
-            instance.food = amount;
-            return this;
-        }
-
-        public Builder setHousing(double amount) {
-            instance.housing = amount;
-            return this;
-        }
-
-        public Builder setEntertainment(double amount) {
-            instance.entertainment = amount;
-            return this;
-        }
-
-        public Builder setSavings(double amount) {
-            instance.savings = amount;
-            return this;
-        }
-
-        public Builder addCustomCategory(String category, double amount) {
-            instance.customCategories.put(category, amount);
-            return this;
-        }
-
-        public BudgetResult build() {
-            return instance;
-        }
-    }
+    // Setters (package-private, used by builder)
+    void setFood(double amount) { this.food = amount; }
+    void setHousing(double amount) { this.housing = amount; }
+    void setEntertainment(double amount) { this.entertainment = amount; }
+    void setSavings(double amount) { this.savings = amount; }
+    void addCustomCategory(String category, double amount) { this.customCategories.put(category, amount); }
 }
