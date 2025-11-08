@@ -52,16 +52,13 @@ This lab uses Java. The `lab2` module implements the three design patterns liste
 Snippet (from `Main`):
 
 ```java
-BudgetFactory factory = new ConcreteBudgetFactory();
-BudgetConfig config = BudgetConfig.get();
-
-BudgetResult budget = new BudgetResult.Builder()
-        .setFood(1200.0)
-        .setHousing(1800.0)
-        .setEntertainment(600.0)
-        .setSavings(1500.0)
-        .addCustomCategory("Transportation", 400.0)
-        .build();
+        Builder manualBuilder = new ConcreteBudgetBuilder();
+        manualBuilder.reset();
+        manualBuilder.buildFood(Math.min(1500.0, config.getLimit("food")));
+        manualBuilder.buildHousing(Math.min(2000.0, config.getLimit("housing")));
+        manualBuilder.buildEntertainment(400.0);
+        manualBuilder.buildSavings(1000.0);
+        BudgetResult customBudget = manualBuilder.getResult();
 ```
 
 - The Builder is implemented as `public static class Builder` inside `BudgetResult` — this is a common and convenient approach: callers can use `new BudgetResult.Builder()` while the inner Builder still has access to the private fields of `BudgetResult` via the instance it constructs.
