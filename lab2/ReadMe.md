@@ -1,4 +1,4 @@
-# Topic: 3 Design Patterns — Factory, Singleton, Builder
+# Topic: 1 Design Patterns — Factory, Singleton, Builder
 
 ## Author: Belih Dmitrii
 
